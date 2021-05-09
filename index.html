@@ -47,10 +47,15 @@
 
                 <div class="content project_headline">
                     <div class="img" style="text-align:center">
-                        <img class="img_responsive" src="./teaser.png" alt="Teaser" style="margin:auto;max-width:75%">
+                        <img class="img_responsive" src="./teaser.png" alt="Teaser" style="margin:auto;max-width:90%">
                     </div>
                     <div class="text">
-                        <p>Figure 1: Constructing views for contrastive learning is important. But what are good views? We hypothesize good views should be those that only share label information w.r.t the downstream task, while throwing away nuisance factors, which we call <i>InfoMin</i> principle.</p>
+                        <p>Figure 1: 
+                            An overview of the key components of this work: (a) and (b) are two reachable collapse patterns in self-supervised settings; (c) is an illustration of the goal of feature decorrelation; (d) is a sketch of the framework used in this work.
+                            
+                            
+                            <!-- Constructing views for contrastive learning is important. But what are good views? We hypothesize good views should be those that only share label information w.r.t the downstream task, while throwing away nuisance factors, which we call <i>InfoMin</i> principle. -->
+                        </p>
                     </div>
                 </div>
 
@@ -101,21 +106,45 @@ The capability of correlation as an unsupervised metric and the gains from featu
 
                 <div class="content">
                     <div class="text">
-                        <h3>Methods</h3>
+                        <h3>Different types of mode collapse when no negative sample is used</h3>
 
-                        <p> (1) Synthesizing Views: we can use an unsupervised adversarial objective to minimize the mutual information between views, while using an supervised objective (only on small amount of labeled data) to retain relevant information.
-                        </p>
 
                         <div class="content project_headline">
                             <div class="img" style="text-align:center">
                                 <img class="img_responsive" src="./collapse_patterns.png" alt="Teaser" style="margin:auto;max-width:90%">
                             </div>
                             <div class="text">
-                                <p>Figure 2: Schematic of contrastive representation learning with a learned view generator. An input image is split into two views using an invertible view generator. To learn the view generator, we optimize the losses in yellow: minimizing information between views while ensuring we can classify the object from each view. The encoders used to estimate mutual information are always trained to maximize the InfoNCE lower bound. After learning the view generator, we reset the weights of the encoders, and train with a fixed view generator without the additional supervised classification losses.</p>
+                                <p>Figure 2: 
+
+                                    Direct visualization of 2-dimensional projection spaces on CIFAR-10. Different colors correspond to different classes. Figure (a), (b) and (c) are from our framework. For completeness, we visualize the 2-dimensional projection spaces of SimCLR (by setting the output dimension of the projector to be 2) and a supervised baseline (by letting the penultimate layer to contain 2 neurons) in Figure (d) and (e).
+                                    <!-- Schematic of contrastive representation learning with a learned view generator. An input image is split into two views using an invertible view generator. To learn the view generator, we optimize the losses in yellow: minimizing information between views while ensuring we can classify the object from each view. The encoders used to estimate mutual information are always trained to maximize the InfoNCE lower bound. After learning the view generator, we reset the weights of the encoders, and train with a fixed view generator without the additional supervised classification losses. -->
+                                
+                                
+                                </p>
                             </div>
                         </div>
 
-                        <p> (2) InfoMin Data Augmenation on ImageNet
+                        <!-- <h3>Normally, people </h3> -->
+                        <h4>(a) Complete collapse</h1>
+                        <p>  Normally, people think of collapse as a complete collapse where all features are residing in a tiny region with little or no variance.
+                            
+                            
+                            <!-- We verify the existence of complete collapse in self-supervised settings and address it successfully by standardizing variance. -->
+                            <!-- we can use an unsupervised adversarial objective to minimize the mutual information between views, while using an supervised objective (only on small amount of labeled data) to retain relevant information. -->
+                        </p>
+
+                        <h4>(b) Dimensional collapse</h4>
+                        <p>After standardizing the otherwise complete collapsed feature space, we discovered another collapse pattern, dimensional collapse. In dimensional collapse, feature space are stretched diagonally such that it satifies the standard deviation requirement but maximizes feature correlation.
+                            
+                            
+                            <!-- satisfies the feature normalization requirement but still -->
+                            <!-- After normalizing the feature space, we discover another reachable collapse pattern ignored by existing works, namely dimensional collapse. -->
+                        </p>
+                            
+                        <h4>(c) Decorrelated feature space</h4>
+                        <p>
+                            Instead of standardizing variance, we standardize covariance (<i>i.e.</i> feature decorrelation). The feature space no longer collapses in any possible way. 
+                            Using feature decorrelation techniques, we achieve comparable results compared with those methods that require negative samples.
                         </p>
 
 
@@ -124,7 +153,11 @@ The capability of correlation as an unsupervised metric and the gains from featu
                                 <img class="img_responsive" src="./results.png" alt="Teaser" style="margin:auto;max-width:90%">
                             </div>
                             <div class="text">
-                                <p>Figure 3: The augmentation that we manually designed following the principle of InfoMin. As can be see from the left figure, lower I<sub>NCE</sub> typically results in higher accuracy before we touch a turning point (which we might haven't touched yet). </p>
+                                <p>Figure 3: 
+                                    Top-1 accuracies(%) of DBN and Shuffled-DBN in linear evaluation with 200-epoch pretraining. For completeness and reference, we include results of some representative methods from our reproduction. For a fair comparison, we use the same projector and augmentations as we describe in Section 4.1 for all methods in the reproduction.    
+                                    
+                                    <!-- The augmentation that we manually designed following the principle of InfoMin. As can be see from the left figure, lower I<sub>NCE</sub> typically results in higher accuracy before we touch a turning point (which we might haven't touched yet). -->
+                                </p>
                             </div>
                             </div>
                     </div>
