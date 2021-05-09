@@ -1,0 +1,141 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="gr__shape2prog_csail_mit_edu"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+        <script src="./head.js"></script>        <meta name="viewport" content="width=device-width, initial-scale=1">    <link rel="shortcut icon" href="http://shape2prog.csail.mit.edu/images/favicon.ico">
+        <meta name="description" content="What makes for good views for contrastive learning">
+        <meta name="keywords" content="MIT,Contrastive Learning,Views,Unsupervised Learning,Transfer Learning">
+
+        <title>Decorr</title>
+        <link rel="stylesheet" href="./font.css">
+        <link rel="stylesheet" href="./main.css">
+
+    </head>
+
+    <body data-gr-c-s-loaded="true">
+
+        <div class="outercontainer">
+            <div class="container">
+
+                <div class="content project_title">
+                    <h1>On Feature Decorrelation in Self-Supervised Learning</h1>
+                </div>
+
+                <div class="content project_headline">
+                    <center><h2>
+                      <font size="3">Tianyu Hua<sup>*12</sup></font>&nbsp;&nbsp;
+                      <font size="3">Wenxiao Wang<sup>*1</sup></font>&nbsp;&nbsp;
+                      <font size="3">Zihui Xue<sup>23</sup></font>&nbsp;&nbsp;
+                      <font size="3">Yue Wang<sup>4</sup></font>&nbsp;&nbsp;
+                      <font size="3">Sucheng Ren<sup>25</sup></font>&nbsp;&nbsp;
+                      <font size="3">Hang Zhao<sup>1</sup></font>&nbsp;&nbsp;
+                    </h2></center>
+                    <center><h2>
+                        <font size="3">1 Tsinghua University</font>&nbsp;&nbsp;
+                        <font size="3">2 Shanghai Qi Zhi Institute</font>&nbsp;&nbsp;
+                        <font size="3">3 University of Texas at Austin</font>&nbsp;&nbsp;
+                        <font size="3">4 Massachusetts Institute of Technology</font>&nbsp;&nbsp;
+                        <font size="3">5 South China University of Technology</font>&nbsp;&nbsp;
+                        <font size="3">* Equal contribution</font>&nbsp;&nbsp;
+                    </h2></center>
+                    <!-- <center></center> -->
+                    <center><h2>
+                    <br>
+                    <br>
+                    </h2></center>
+                </div>
+
+                <div class="content project_headline">
+                    <div class="img" style="text-align:center">
+                        <img class="img_responsive" src="./teaser.png" alt="Teaser" style="margin:auto;max-width:75%">
+                    </div>
+                    <div class="text">
+                        <p>Figure 1: Constructing views for contrastive learning is important. But what are good views? We hypothesize good views should be those that only share label information w.r.t the downstream task, while throwing away nuisance factors, which we call <i>InfoMin</i> principle.</p>
+                    </div>
+                </div>
+
+
+                <div class="content">
+                    <div class="text">
+                        <h3>Abstract</h3>
+                        <p>
+                            
+                            
+In self-supervised representation learning, a common idea behind most of the state-of-the-art approaches is to enforce the robustness of the representations to predefined augmentations. 
+A potential issue of this idea is the existence of completely collapsed solutions (<i>i.e.</i>, constant features), which are typically avoided implicitly by carefully chosen implementation details. 
+In this work, we study a relatively concise framework containing the most common components from recent approaches. 
+We verify the existence of <b>complete collapse</b> and discover another reachable collapse pattern that is usually overlooked, namely <b>dimensional collapse</b>. 
+We connect dimensional collapse with strong correlations between axes and consider such connection as a strong motivation for <b>decorrelation</b> (<i>i.e.</i>, standardizing the covariance matrix). 
+The capability of correlation as an unsupervised metric and the gains from feature decorrelation are verified empirically to highlight the importance and the potential of this insight.
+
+
+                            
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="content">
+                    <div class="text">
+                        <h3>Publication</h3>
+                        <ul>
+                            <li>
+                                <div class="title"><a name="infomin">On Feature Decorrelation in Self-Supervised Learning</a></div>
+                                <div class="authors">
+                                    <a href="https://patrickhua.github.io/">Tianyu Hua</a>,
+                                    <a href="https://wangwenxiao.github.io">Wenxiao Wang</a>,
+                                    <a href="https://sherryxzh.github.io/">Zihui Xue</a>,
+                                    <a href="https://dilipkay.wordpress.com/">Yue Wang</a>, 
+                                    <a href="https://oliverrensu.github.io/">Sucheng Ren</a>, and
+                                    <a href="http://people.csail.mit.edu/hangzhao/">Hang Zhao</a>
+                                </div>
+                                <div>
+                                    <span class="tag"><a href="https://arxiv.org/abs/2105.00470.pdf">Paper</a></span>
+                                    <span class="tag"><a href="https://arxiv.org/abs/2105.00470">arXiv</a></span>
+                                    <span class="tag"><a href="bib.txt">BibTeX</a></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="text">
+                        <h3>Methods</h3>
+
+                        <p> (1) Synthesizing Views: we can use an unsupervised adversarial objective to minimize the mutual information between views, while using an supervised objective (only on small amount of labeled data) to retain relevant information.
+                        </p>
+
+                        <div class="content project_headline">
+                            <div class="img" style="text-align:center">
+                                <img class="img_responsive" src="./collapse_patterns.png" alt="Teaser" style="margin:auto;max-width:90%">
+                            </div>
+                            <div class="text">
+                                <p>Figure 2: Schematic of contrastive representation learning with a learned view generator. An input image is split into two views using an invertible view generator. To learn the view generator, we optimize the losses in yellow: minimizing information between views while ensuring we can classify the object from each view. The encoders used to estimate mutual information are always trained to maximize the InfoNCE lower bound. After learning the view generator, we reset the weights of the encoders, and train with a fixed view generator without the additional supervised classification losses.</p>
+                            </div>
+                        </div>
+
+                        <p> (2) InfoMin Data Augmenation on ImageNet
+                        </p>
+
+
+                        <div class="content project_headline">
+                            <div class="img" style="text-align:center">
+                                <img class="img_responsive" src="./results.png" alt="Teaser" style="margin:auto;max-width:90%">
+                            </div>
+                            <div class="text">
+                                <p>Figure 3: The augmentation that we manually designed following the principle of InfoMin. As can be see from the left figure, lower I<sub>NCE</sub> typically results in higher accuracy before we touch a turning point (which we might haven't touched yet). </p>
+                            </div>
+                            </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    
+
+
+<div id="download_plus_animation"></div></body></html>
