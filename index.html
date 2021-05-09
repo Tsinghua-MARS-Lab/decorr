@@ -28,7 +28,7 @@
                       <font size="3">Zihui Xue<sup>23</sup></font>&nbsp;&nbsp;
                       <font size="3">Yue Wang<sup>4</sup></font>&nbsp;&nbsp;
                       <font size="3">Sucheng Ren<sup>25</sup></font>&nbsp;&nbsp;
-                      <font size="3">Hang Zhao<sup>1</sup></font>&nbsp;&nbsp;
+                      <font size="3">Hang Zhao<sup>12</sup></font>&nbsp;&nbsp;
                     </h2></center>
                     <center><h2>
                         <font size="3">1 Tsinghua University</font>&nbsp;&nbsp;
@@ -88,7 +88,7 @@ The capability of correlation as an unsupervised metric and the gains from featu
                                 <div class="title"><a name="infomin">On Feature Decorrelation in Self-Supervised Learning</a></div>
                                 <div class="authors">
                                     <a href="https://patrickhua.github.io/">Tianyu Hua</a>,
-                                    <a href="https://wangwenxiao.github.io">Wenxiao Wang</a>,
+                                    <a href="https://scholar.google.com/citations?user=hn0u5VgAAAAJ">Wenxiao Wang</a>,
                                     <a href="https://sherryxzh.github.io/">Zihui Xue</a>,
                                     <a href="https://people.csail.mit.edu/yuewang/">Yue Wang</a>, 
                                     <a href="https://oliverrensu.github.io/">Sucheng Ren</a>, and
@@ -134,7 +134,7 @@ The capability of correlation as an unsupervised metric and the gains from featu
                         </p>
 
                         <h4>(b) Dimensional collapse</h4>
-                        <p>After standardizing the otherwise complete collapsed feature space, we discovered another collapse pattern, dimensional collapse. In dimensional collapse, feature space are stretched diagonally such that it satifies the standard deviation requirement but maximizes feature correlation.
+                        <p>After standardizing variance to avoid complete collapsed feature spaces, we discovered another collapse pattern, dimensional collapse. In dimensional collapse, feature space are stretched diagonally such that it satifies the standard deviation requirement but maximizes feature correlation.
                             
                             
                             <!-- satisfies the feature normalization requirement but still -->
@@ -143,8 +143,8 @@ The capability of correlation as an unsupervised metric and the gains from featu
                             
                         <h4>(c) Decorrelated feature space</h4>
                         <p>
-                            Instead of standardizing variance, we standardize covariance (<i>i.e.</i> feature decorrelation). The feature space no longer collapses in any possible way. 
-                            Using feature decorrelation techniques, we achieve comparable results compared with those methods that require negative samples.
+                            Instead of standardizing variance, we standardize covariance (<i>i.e.</i> feature decorrelation), which naturally mitigates the issue of dimensional collapse. 
+                            Using feature decorrelation techniques, we achieve comparable results to representative latest methods.
                         </p>
 
 
